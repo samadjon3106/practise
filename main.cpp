@@ -1,118 +1,107 @@
 #include <iostream>
-#include <cmath>
 using namespace std;
-int main() {
-
-    // char op;
-    // double a, b;
-    // cout<<" Please enter an operation: ";
-    // cin>>op;
-    // cout<<"Please enter a number1: ";
-    // cin>>a;
-    // cout<<"Please enter a number2: ";
-    // cin>>b;
-    // switch(op) {
-    //     case '+':
-    //         cout<<a+b<<endl;
-    //         break;
-    //     case '-':
-    //         cout<<a-b<<endl;
-    //         break;
-    //     case '*':
-    //         cout<<a*b<<endl;
-    //         break;
-    //     case '/':
-    //         cout<<a/b<<endl;
-    //         break;
-    //     case 'p' : cout<<pow(a, b)<<endl;
-    //          break;
-    //     case 's' : cout<<sqrt(a)<<endl;
-    //         break;
-    //     default: cout<<"Invalid operation"<<endl;
-    //         break;
-    // }
 
 
-    //ternary operator
+// templates
+//  template <typename T>
+//  // T add(T a, T b) {
+//  //     return a + b;
+//  }
+
+//class templates
+template <typename T>
+class show {
+    public:
+    T value;
+    show(T val) : value(val) {}
+    T getvalue() {
+        return value;
+    }
+};
+
+// //Template Specialization
+// template <typename T>
+// class printer {
+//     public:
+//     void print(T val) {
+//         cout <<"Generic type:"<< val << endl;
+//     }
+// };
+// template <>
+// class printer<int> {
+//     public:
+//     void print(int val) {
+//         cout <<"Specialized Pinter for int: "<< val << endl;
+//     }
+// };
+//Template Non-Type Parameters with integral types
+// template <typename T, int size>
+// class Array {
+// public:
+//     T array[size];
+//     void print() {
+//         for(int i =0; i < size; i++) {
+//             cout << array[i] << " ";
+//         } cout << endl;
+//     }
+// };
+
+//Using Non-Type Template Parameters with Arrays
+
+
+// int main() {
+    //templates
+    // cout << add(3, 4) << endl;        // Uses int type, prints 7
+    // cout << add(3.5, 4.5) << endl;    // Uses double type, prints 8.0
+    // cout << add(static_cast<int>('A'), 1) << endl;      // Uses char type, prints 'B' (ASCII value of 'A' is 65, so 65 + 1 = 66 which is 'B')
+    // return 0;
+
+    // //class templates
+    // show<int> int_show(122);
+    // show<char> char_show('a');
+    // show<string> string_show("hello");
     //
-    // int age;
-    // cout << "Enter your age: ";
-    // cin >> age;
-    // age>=18? cout<<"You are mature": cout<<"You are still young"<<endl;
+    // cout << int_show.getvalue() << endl;
+    // cout << char_show.getvalue() << endl;
+    // cout << string_show.getvalue() << endl;
 
-    //usefull string methods
+    // //Template Specialization
+    // printer<string> name;
+    // printer<int> age;
+    //
+    // name.print("Samadjon");
+    // age.print(19);
+    //Template Non-Type Parameters with intergal types
+    // Array<int, 10> arr;
+    // Array<double, 13> arr2;
+    // arr.print();
+    // arr2.print();
 
-    // string name;
-    // cout << "Enter your name: ";
-    // getline(cin, name);
-
-    // if (name.length() > 15) {
-    //     cout << name << " is too long" << endl;
-    // } else if (name.empty()) {
-    //     cout<<"You didn't enter a name. Please enter a name"<<endl;
-    // } else {
-    //     cout << "Welcome " <<name<< endl;
-    //     name.append("@gmail.com ");
-    //     cout << "Your username is "<<name << endl;
-    //}
-    // name.insert(1, "@");
-
-    // name.erase(1, 5);
-
-  ;
-    // cout<<  name.find('n')<<endl;
+// return 0;
+//  }
 
 
-    //while loop
-//     int age;
-//     do{
-//         cout << "You are still young"<<endl;;
-//         cout<<"Enter your age again: ";
-//         cin>>age;
-//     }while (age<=18);
-// cout<<"Welcome"<<endl;
 
-    // //for
-    // for (int i = 10; i >= 0; i-=2) {
-    //     cout << i << endl;
-    // }
+//
+//exceptions
+//
 
-    //break= stop iteration
-    //continue= skip current intereation
-    // for (int i =1; i <= 10; i++) {
-    //     if (i==5)
-    //         break;
-    //             continue;
-    //     cout << i << endl;
-    // }
-
-    //nested loops
-
-   //  int rows, cols;
-   //  string name;
-   //  cout<<"Enter number of rows: ";
-   //  cin>>rows;
-   //  cout<<"Enter number of cols: ";
-   //  cin>>cols;
-   //  cout<<"Enter character: ";
-   // cin>>name;
-   //  for (int i = 1; i <rows; i++) {
-   //      for (int j = 1; j <= cols; j++) {
-   //          cout << name<<" ";
-   //      }
-   //      cout<<endl;
-   //  }
-   //
-   //  return 0;
-
-
-    //random number
-
-    srand(time(NULL));
-    int randomNumber = rand() % 25+1;
-    cout << randomNumber << endl;
+int divide(int a , int b) {
+    if (b == 0) {
+        throw runtime_error("Divide by zero is not allowed");
+    }
+    return a/b;
 }
 
+ int main() {
+    try {
+        int result=divide(2,2);
+        cout<<"Rusult: "<<result<<endl;
+    } catch (const runtime_error& e) {
+        cout<<"Error: "<<e.what()<<endl;
+    }
+    return 0;
+}
 // TIP See CLion help at <a
 // href="https://www.jetbrains.com/help/clion/">jetbrains.com/help/clion/</a>.
 //  Also, you can try interactive lessons for CLion by selecting
