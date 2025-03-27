@@ -184,12 +184,14 @@ int main() {
  cin>>n;
 
  list<double> val;
+ double input_value;
 
 cout<<"Enter the "<<n<<" numbers: ";
-double input_value;
+
  for (int i=0;i<n;i++) {
   cin>>input_value;
   val.push_back(input_value);
+  }
 
 cout<<"List: ";
   for (auto it=val.begin(); it !=val.end();++it) {
@@ -203,17 +205,42 @@ cout<<"List: ";
    cout<<*it<<" ";
   } cout<<endl;
 
+  double sum=0;
+  for(auto it=val.begin();it!=val.end(); ++it){
+    sum+=*it;
+  }
+  double average =sum/val.size();
+
+cout<<"Average: "<<average<<endl;
 
 
 
- }
 
 
+
+for(auto it=val.begin();it!=val.end();++it){
+  if(*it<average){
+  it=val.erase(it);
+  } else {
+    ++it;
+  }
+}
+  cout<<"After removing: ";
+  for(auto it=val.begin();it!=val.end();++it){
+    cout<<*it<<" ";
+  }
+cout<<endl;
+
+val.sort();
+
+  cout<<"Sorted: ";
+  for(auto it=val.begin();it!=val.end();++it){
+   cout<<*it<<" ";
+  }
+  cout<<endl;
 
  return 0;
-}
-
-// TIP See CLion help at <a
+}// TIP See CLion help at <a
 // href="https://www.jetbrains.com/help/clion/">jetbrains.com/help/clion/</a>.
 //  Also, you can try interactive lessons for CLion by selecting
 //  'Help | Learn IDE Features' from the main menu.
